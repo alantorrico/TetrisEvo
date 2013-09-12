@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry exported="true" kind="lib" path="/TetrisEvo/libs/gdx.jar" sourcepath="/TetrisEvo/libs/gdx-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/gdx-backend-android.jar" sourcepath="libs/gdx-backend-android-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/TetrisEvo/libs/bodyeditor-loader.jar" sourcepath="/TetrisEvo/libs/bodyeditor-loader-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/TetrisEvo/libs/tween-engine-api.jar" sourcepath="/TetrisEvo/libs/tween-engine-api-sources.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/TetrisEvo"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>
