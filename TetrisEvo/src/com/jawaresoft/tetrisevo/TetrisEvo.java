@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
 public class TetrisEvo implements ApplicationListener {
 	private OrthographicCamera camera;
@@ -23,6 +25,7 @@ public class TetrisEvo implements ApplicationListener {
 		
 		camera = new OrthographicCamera(1, h/w);
 		batch = new SpriteBatch();
+		
 		
 		texture = new Texture(Gdx.files.internal("data/libgdx.png"));
 		texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
@@ -39,6 +42,7 @@ public class TetrisEvo implements ApplicationListener {
 	public void dispose() {
 		batch.dispose();
 		texture.dispose();
+	
 	}
 
 	@Override
