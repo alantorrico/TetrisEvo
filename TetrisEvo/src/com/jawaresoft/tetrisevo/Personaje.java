@@ -10,7 +10,7 @@ public class Personaje extends Actor {
 	private TextureRegion imagen;
 
 	public Personaje() {
-		imagen = new TextureRegion(TetrisEvo.ADMINISTRADOR_RECURSOS.get("bala.png", Texture.class), 16, 16);
+	imagen = new TextureRegion(TetrisEvo.ADMINISTRADOR_RECURSOS.get("bala.png", Texture.class), 10, 10);
 		//setSize(imagen.getRegionWidth(), imagen.getRegionHeight());
 	}
 
