@@ -6,6 +6,7 @@ public class PantallaJuego extends Pantalla {
 	
 	private Stage escenario;
 	private Personaje personaje;
+	private Bala bala;
 
 	public PantallaJuego(TetrisEvo juego) {
 		super(juego);
@@ -19,9 +20,12 @@ public class PantallaJuego extends Pantalla {
 	public void show() {
 		escenario = new Stage();
 		personaje = new Personaje();
+		bala = new Bala();
 		
-		//escenario.addActor(personaje);
-		//personaje.setPosition(50, 50);
+		escenario.addActor(personaje);
+		escenario.addActor(bala);
+		personaje.setPosition(50, 50);
+		bala.setPosition(80, 110);
 	}
 
 	public void hide() {
