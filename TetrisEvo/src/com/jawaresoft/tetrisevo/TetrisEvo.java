@@ -25,6 +25,8 @@ public class TetrisEvo extends Game {
 	static final int BOX_POSICION_ITERACIONES = 3;
 	
 	private int acumulador;
+	
+	
 	//Fin Box2D
 	public TetrisEvo(){
 		
