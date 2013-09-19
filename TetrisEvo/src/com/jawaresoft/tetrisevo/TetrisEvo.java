@@ -33,6 +33,7 @@ public class TetrisEvo extends Game {
 	public void create() {
 		ADMINISTRADOR_RECURSOS.load("Personaje.png", Texture.class);
 		ADMINISTRADOR_RECURSOS.load("Bala.png", Texture.class);
+		ADMINISTRADOR_RECURSOS.load("Personaje1.png", Texture.class);
 		while(!ADMINISTRADOR_RECURSOS.update()){
 		}
 		setScreen(new PantallaJuego(this));

@@ -18,6 +18,7 @@ public class PantallaJuego extends Pantalla {
 	}
 
 	public void render(float delta) {
+		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL11.GL_COLOR_BUFFER_BIT);
 		escenario.act();
 		escenario.draw();
