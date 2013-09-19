@@ -12,7 +12,6 @@ public class PantallaJuego extends Pantalla {
 	
 	private Stage escenario;
 	private Personaje personaje;
-	private Bala bala;
 
 	public PantallaJuego(TetrisEvo juego) {
 		super(juego);
@@ -27,24 +26,22 @@ public class PantallaJuego extends Pantalla {
 	public void show() {
 		escenario = new Stage();
 		personaje = new Personaje();
-		bala = new Bala();
 		Gdx.input.setInputProcessor(escenario);
 		
 		escenario.addActor(personaje);
-		escenario.addActor(bala);
 		
 		personaje.setPosition(50, 50);
 		escenario.setKeyboardFocus(personaje);
 		personaje.addListener(new InputListener(){
 
 			@Override
-			public boolean keyDown(InputEvent event, int keycode) {
-				switch(keycode){
+			public boolean keyDown(InputEvent evento, int codigoTecla) {
+				switch(codigoTecla){
 				case Input.Keys.RIGHT:
-					personaje.velocidad.x = 150;
+					personaje.velocidad.x = 250;
 					return true;
 				case Input.Keys.LEFT:
-					personaje.velocidad.x = -150;
+					personaje.velocidad.x = -250;
 					return true;
 				default:
 					return false;
@@ -52,31 +49,31 @@ public class PantallaJuego extends Pantalla {
 			}
 
 			@Override
-			public boolean keyUp(InputEvent event, int keycode) {
-				boolean respuesta = true;
-				switch(keycode){
+			public boolean keyUp(InputEvent evento, int codigoTecla) {
+				switch(codigoTecla){
 				case Input.Keys.RIGHT:
 					personaje.velocidad.x = 0;
+					return true;
 				case Input.Keys.LEFT:
 					personaje.velocidad.x = 0;
+					return true;
 				default:
-					respuesta = false;
+					return false;
 				}
-				return respuesta;
 			}
 
 			@Override
-			public boolean keyTyped(InputEvent event, char character) {
-				// TODO Auto-generated method stub
-				return super.keyTyped(event, character);
+			public boolean keyTyped(InputEvent evento, char caracter) {
+				if(caracter != ' '){
+					return false;
+				}
+				Bala bala = new Bala();
+				bala.setPosition(personaje.getX()+(personaje.getWidth()/2), personaje.getY()+personaje.getHeight()+10);
+				escenario.addActor(bala);
+				return true;
 			}
 			
 		});
-		
-		
-		
-		
-		bala.setPosition(80, 110);
 	}
 
 	public void hide() {

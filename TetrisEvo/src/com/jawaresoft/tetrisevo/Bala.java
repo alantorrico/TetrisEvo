@@ -14,6 +14,14 @@ public class Bala extends Actor {
 		setSize(imagen.getRegionWidth(), imagen.getRegionHeight());
 	}
 	
+	@Override
+	public void act(float delta) {
+		translate(0, 300*delta);
+		if(getY() > getStage().getHeight()){
+			remove();
+		}		
+	}
+
 	public void draw(SpriteBatch batch, float parentAlpha) {
 		batch.draw(imagen, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
 	}
