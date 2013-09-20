@@ -40,7 +40,7 @@ public class TetrisEvo extends Game {
 		}
 		setScreen(new PantallaJuego(this));
 		
-		mundo = new World(new Vector2(0,10), true);
+		//mundo = new World(new Vector2(0,10), true);
 	}
 
 	public void dispose() {
