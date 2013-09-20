@@ -10,12 +10,38 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class Personaje extends Actor {
 	
-	private TextureRegion imagen;
-	public Vector2 velocidad = new Vector2(0, 0);
+	public static final int IZQUIERDA = 0;
+	public static final int DERECHA = 1;
+	
+	private int movimiento;
+	private float estadoTiempo;
+	
+	private Vector2 velocidad = new Vector2(0, 0);
 	private Animation animacionIzquierda, animacionDerecha;
 	private TextureRegion frameActual;
-	private float estadoTiempo;
 
+	public Personaje() {
+		animacionIzquierda = new Animation(0.1f, cargarSprites("PersonajeIzquierda.png", 1, 8));
+		animacionDerecha = new Animation(0.1f, cargarSprites("PersonajeDerecha.png", 1, 8));
+		estadoTiempo = 0.0f;
+		frameActual = animacionDerecha.getKeyFrame(estadoTiempo, true);
+		movimiento  = DERECHA;
+		setSize(frameActual.getRegionWidth(), frameActual.getRegionHeight());
+	}
+	
+	public int getMovimiento(){	
+		return movimiento;
+	}
+	
+	public void setMovimiento(int nuevoMovimiento){
+		movimiento = nuevoMovimiento;
+	}
+	
+	public Vector2 getVelocidad()
+	{
+		return velocidad;
+	}
+	
 	@Override
 	public void act(float delta) {
 		translate(velocidad.x*delta, velocidad.y*delta);
@@ -37,30 +63,28 @@ public class Personaje extends Actor {
 			setY(getStage().getHeight() - getHeight());
 			velocidad.y = 0;
 		}
-		
-		
 	}
-
-	public Personaje() {
-		animacionDerecha = new Animation(0.1f, cargarSprites("Personaje1.png", 2, 8));
-		estadoTiempo = 0.0f;
-		frameActual = animacionDerecha.getKeyFrame(estadoTiempo, true);
-		setSize(frameActual.getRegionWidth(), frameActual.getRegionHeight());
-		
-	}
-
+	
+	@Override
 	public void draw(SpriteBatch batch, float parentAlpha) {
 		estadoTiempo += Gdx.graphics.getDeltaTime();
 		
-		frameActual = animacionDerecha.getKeyFrame(estadoTiempo, true);
-		batch.draw(frameActual, getX(), getY());
+		if(movimiento == DERECHA){
+			frameActual = animacionDerecha.getKeyFrame(estadoTiempo, true);
 		}
+		else if(movimiento == IZQUIERDA){
+			frameActual = animacionIzquierda.getKeyFrame(estadoTiempo, true);
+		}
+		
+		batch.draw(frameActual, getX(), getY());
+	}
 	
 	public TextureRegion[] cargarSprites(String nombre, int filas, int columnas){
-		Texture textura = TetrisEvo.ADMINISTRADOR_RECURSOS.get("Personaje1.png", Texture.class);
+		int posicion = 0;
+		
+		Texture textura = TetrisEvo.ADMINISTRADOR_RECURSOS.get(nombre, Texture.class);
 		TextureRegion[][] imagenes = TextureRegion.split(textura, textura.getWidth()/columnas, textura.getHeight()/filas);
 		TextureRegion[] frames = new TextureRegion[columnas*filas];
-		int posicion = 0;
 		
 		for(int i = 0; i < filas; i++){
 			for(int j = 0; j < columnas; j++){

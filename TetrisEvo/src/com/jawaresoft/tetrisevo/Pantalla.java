@@ -9,13 +9,16 @@ public abstract class Pantalla implements Screen {
 	public Pantalla(TetrisEvo juego){
 		this.juego = juego;
 	}
-
+	
+	@Override
 	public void resize(int width, int height) {
 	}
 
+	@Override
 	public void pause() {
 	}
-
+	
+	@Override
 	public void resume() {
 	}
 }

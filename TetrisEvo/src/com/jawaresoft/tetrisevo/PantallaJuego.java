@@ -3,7 +3,6 @@ package com.jawaresoft.tetrisevo;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL11;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -17,6 +16,7 @@ public class PantallaJuego extends Pantalla {
 		super(juego);
 	}
 
+	@Override
 	public void render(float delta) {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL11.GL_COLOR_BUFFER_BIT);
@@ -24,6 +24,7 @@ public class PantallaJuego extends Pantalla {
 		escenario.draw();
 	}
 
+	@Override
 	public void show() {
 		escenario = new Stage();
 		personaje = new Personaje();
@@ -39,10 +40,12 @@ public class PantallaJuego extends Pantalla {
 			public boolean keyDown(InputEvent evento, int codigoTecla) {
 				switch(codigoTecla){
 				case Input.Keys.RIGHT:
-					personaje.velocidad.x = 250;
+					personaje.getVelocidad().x = 250;
+					personaje.setMovimiento(Personaje.DERECHA);
 					return true;
 				case Input.Keys.LEFT:
-					personaje.velocidad.x = -250;
+					personaje.getVelocidad().x = -250;
+					personaje.setMovimiento(Personaje.IZQUIERDA);
 					return true;
 				default:
 					return false;
@@ -53,10 +56,10 @@ public class PantallaJuego extends Pantalla {
 			public boolean keyUp(InputEvent evento, int codigoTecla) {
 				switch(codigoTecla){
 				case Input.Keys.RIGHT:
-					personaje.velocidad.x = 0;
+					personaje.getVelocidad().x = 0;
 					return true;
 				case Input.Keys.LEFT:
-					personaje.velocidad.x = 0;
+					personaje.getVelocidad().x = 0;
 					return true;
 				default:
 					return false;
@@ -77,9 +80,11 @@ public class PantallaJuego extends Pantalla {
 		});
 	}
 
+	@Override
 	public void hide() {
 	}
 	
+	@Override
 	public void dispose() {
 		escenario.dispose();
 	}
